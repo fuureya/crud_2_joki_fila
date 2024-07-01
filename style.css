@@ -1,0 +1,53 @@
+/* style.css */
+
+/* Atur margin dan padding secara default */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Sesuaikan tata letak navbar */
+.navbar {
+    margin-bottom: 20px;
+}
+
+/* Atur tata letak container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Atur gaya tombol */
+.btn {
+    margin-right: 10px;
+}
+
+/* Atur gaya judul */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Atur gaya paragraf */
+p {
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Gaya untuk daftar */
+ul {
+    padding-left: 20px;
+}
+
+/* Gaya untuk link pada navbar */
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+/* Gaya untuk link aktif pada navbar */
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+}
