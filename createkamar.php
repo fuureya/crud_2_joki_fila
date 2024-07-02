@@ -111,7 +111,6 @@
                 } else {
                     echo "<div class='alert alert-danger'>Error: " . mysqli_error($koneksi) . "</div>";
                 }
-
                 mysqli_close($koneksi);
             }
             ?>
