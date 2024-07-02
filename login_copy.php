@@ -157,14 +157,8 @@
 
             // Lakukan pemeriksaan login saat tombol login ditekan
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
-                // Lakukan koneksi ke database
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "crud2";
 
-                $koneksi = new mysqli($servername, $username, $password, $dbname);
-
+                require_once "koneksi.php";
                 if ($koneksi->connect_error) {
                     die("Koneksi gagal: " . $koneksi->connect_error);
                 }

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     tanggal_kadaluarsa = '$tanggal_kadaluarsa' 
                     WHERE id_obat = '$id_obat' ";
 
-    $hasil_update = mysqli_query($kon, $sql_update);
+    $hasil_update = mysqli_query($koneksi, $sql_update);
 
     if ($hasil_update) {
         header("Location: indexobat.php");
@@ -27,4 +27,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<div>Data Gagal diupdate.</div>";
     }
 }
-?>

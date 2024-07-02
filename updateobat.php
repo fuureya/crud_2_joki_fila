@@ -12,7 +12,7 @@ if (isset($_GET['id_obat'])) {
 
     // Query SQL untuk mengambil data obat berdasarkan id_obat
     $sql = "SELECT * FROM obat WHERE id_obat='$id_obat'";
-    $hasil = mysqli_query($kon, $sql);
+    $hasil = mysqli_query($koneksi, $sql);
 
     // Memeriksa apakah data obat ditemukan
     if (mysqli_num_rows($hasil) == 1) {
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     WHERE id_obat='$id_obat'";
 
     // Eksekusi query update
-    $hasil_update = mysqli_query($kon, $sql_update);
+    $hasil_update = mysqli_query($koneksi, $sql_update);
 
     // Cek apakah query berhasil dijalankan
     if ($hasil_update) {
@@ -70,25 +70,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Obat - JIENCIO CENTER</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <style>
-    /* Your CSS styles */
-    body {
-        background-image: url('gambarbg.jpg');
-        background-size: cover;
-        background-position: center;
-        color: black;
-    }
+        /* Your CSS styles */
+        body {
+            background-image: url('gambarbg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: black;
+        }
 
-    .logo {
-        height: 1.2em;
-        margin-right: 30px;
-    }
+        .logo {
+            height: 1.2em;
+            margin-right: 30px;
+        }
 
-    .form-container {
-        margin-top: 50px;
-    }
+        .form-container {
+            margin-top: 50px;
+        }
     </style>
 </head>
 
@@ -96,8 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="home.php">JIENCIO CENTER</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -115,32 +113,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row justify-content-center form-container">
             <div class="col-md-6">
                 <!-- Form untuk update data obat -->
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id_obat=<?php echo $id_obat; ?>"
-                    method="POST">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id_obat=<?php echo $id_obat; ?>" method="POST">
                     <div class="form-group">
                         <label for="nama_obat">Nama Obat</label>
-                        <input type="text" class="form-control" id="nama_obat" name="nama_obat"
-                            value="<?php echo $nama_obat; ?>" required>
+                        <input type="text" class="form-control" id="nama_obat" name="nama_obat" value="<?php echo $nama_obat; ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="jenis_obat">Jenis Obat</label>
-                        <input type="text" class="form-control" id="jenis_obat" name="jenis_obat"
-                            value="<?php echo $jenis_obat; ?>" required>
+                        <input type="text" class="form-control" id="jenis_obat" name="jenis_obat" value="<?php echo $jenis_obat; ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="stok">Stok</label>
-                        <input type="number" class="form-control" id="stok" name="stok" value="<?php echo $stok; ?>"
-                            required>
+                        <input type="number" class="form-control" id="stok" name="stok" value="<?php echo $stok; ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="harga">Harga</label>
-                        <input type="text" class="form-control" id="harga" name="harga" value="<?php echo $harga; ?>"
-                            required>
+                        <input type="text" class="form-control" id="harga" name="harga" value="<?php echo $harga; ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="tanggal_kadaluarsa">Tanggal Kadaluarsa</label>
-                        <input type="date" class="form-control" id="tanggal_kadaluarsa" name="tanggal_kadaluarsa"
-                            value="<?php echo $tanggal_kadaluarsa; ?>" required>
+                        <input type="date" class="form-control" id="tanggal_kadaluarsa" name="tanggal_kadaluarsa" value="<?php echo $tanggal_kadaluarsa; ?>" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
@@ -155,8 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </footer>
 
     <!-- JavaScript scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Yhj04Hz+YnBM0pSrFNO7uF0Pj3csG3OuKB2l+8Hso5OuEJ/tSZvS8x8Xh0HXbr+t" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-Yhj04Hz+YnBM0pSrFNO7uF0Pj3csG3OuKB2l+8Hso5OuEJ/tSZvS8x8Xh0HXbr+t" crossorigin="anonymous">
     </script>
 
 </body>

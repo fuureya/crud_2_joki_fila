@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO pasien (nama, usia, jenis_kelamin, alamat) VALUES ('$nama', '$usia', '$jenis_kelamin', '$alamat')";
 
     // Jalankan query
-    $result = mysqli_query($kon, $sql);
+    $result = mysqli_query($koneksi, $sql);
 
     // Periksa apakah query berhasil dijalankan
     if ($result) {
@@ -22,10 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: indexpasien.php");
     } else {
         // Jika query tidak berhasil, tampilkan pesan error
-        echo "Error: " . $sql . "<br>" . mysqli_error($kon);
+        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
     }
 
     // Tutup koneksi database
-    mysqli_close($kon);
+    mysqli_close($koneksi);
 }
-?>

@@ -7,15 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lokasi = $_POST['lokasi'];
 
     $sql = "INSERT INTO peralatan (nama_peralatan, kondisi, lokasi) VALUES ('$nama_peralatan', '$kondisi', '$lokasi')";
-    
-    if (mysqli_query($kon, $sql)) {
-        mysqli_close($kon);
+
+    if (mysqli_query($koneksi, $sql)) {
+        mysqli_close($koneksi);
         header('Location: indexperalatan.php');
         exit;
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($kon);
+        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
     }
 }
 
-mysqli_close($kon);
-?>
+mysqli_close($koneksi);

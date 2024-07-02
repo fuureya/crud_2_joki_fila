@@ -3,13 +3,12 @@
 
 <head>
     <title>Form Pendaftaran pasien</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <style>
-    .logo {
-        height: 1.2em;
-        margin-right: 30px;
-    }
+        .logo {
+            height: 1.2em;
+            margin-right: 30px;
+        }
     </style>
 </head>
 
@@ -19,7 +18,8 @@
         //Include file koneksi, untuk koneksikan ke database
         include "koneksi.php";
 
-        function input($data) {
+        function input($data)
+        {
             $data = trim($data);
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
@@ -30,7 +30,7 @@
             $id_peserta = input($_GET["id_peserta"]);
 
             $sql = "SELECT * FROM peserta WHERE id_peserta=$id_peserta";
-            $hasil = mysqli_query($kon, $sql);
+            $hasil = mysqli_query($koneksi, $sql);
             $data = mysqli_fetch_assoc($hasil);
         }
 
@@ -50,7 +50,7 @@
                     alamat='$alamat'
                     WHERE id_peserta=$id_peserta";
 
-            $hasil = mysqli_query($kon, $sql);
+            $hasil = mysqli_query($koneksi, $sql);
 
             if ($hasil) {
                 header("Location:index.php");
@@ -63,7 +63,7 @@
         <h2><img src="logo.jpg" alt="Logo Jiencio" class="logo">Input Data Pasien</h2><br>
 
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>Nama:</label>
                 <input type="text" name="nama" class="form-control" placeholder="Masukan Nama" required />

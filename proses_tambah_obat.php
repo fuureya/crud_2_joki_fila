@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_insert = "INSERT INTO obat (nama_obat, jenis_obat, stok, harga, tanggal_kadaluarsa) 
                     VALUES ('$nama_obat', '$jenis_obat', '$stok', '$harga', '$tanggal_kadaluarsa')";
 
-    $hasil_insert = mysqli_query($kon, $sql_insert);
+    $hasil_insert = mysqli_query($koneksi, $sql_insert);
 
     if ($hasil_insert) {
         header("Location: indexobat.php");
@@ -21,4 +21,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<div>Data Gagal disimpan.</div>";
     }
 }
-?>

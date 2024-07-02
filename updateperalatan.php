@@ -5,39 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JIENCIO CENTER - Update Peralatan</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <style>
-    /* CSS Styles */
-    body {
-        background-image: url('gambarbg.jpg');
-        background-size: cover;
-        background-position: center;
-        color: black;
-    }
+        /* CSS Styles */
+        body {
+            background-image: url('gambarbg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: black;
+        }
 
-    .logo {
-        height: 1.2em;
-        margin-right: 30px;
-    }
+        .logo {
+            height: 1.2em;
+            margin-right: 30px;
+        }
 
-    .navbar-nav .nav-item .nav-link {
-        color: #fff;
-    }
+        .navbar-nav .nav-item .nav-link {
+            color: #fff;
+        }
 
-    .navbar-nav .nav-item .nav-link.active,
-    .navbar-nav .nav-item .nav-link:hover {
-        color: #fff;
-    }
+        .navbar-nav .nav-item .nav-link.active,
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #fff;
+        }
 
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #f8f9fa;
-        text-align: center;
-        padding: 10px 0;
-    }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
     </style>
 </head>
 
@@ -45,8 +44,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="home.php">JIENCIO CENTER</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -76,30 +74,27 @@
             $id_peralatan = $_GET['id_peralatan'];
 
             $sql = "SELECT * FROM peralatan WHERE id_peralatan = $id_peralatan";
-            $result = mysqli_query($kon, $sql);
+            $result = mysqli_query($koneksi, $sql);
 
             if (mysqli_num_rows($result) == 1) {
                 $data = mysqli_fetch_assoc($result);
-                ?>
-        <form action="proses_update_peralatan.php" method="POST">
-            <input type="hidden" name="id_peralatan" value="<?php echo $data['id_peralatan']; ?>">
-            <div class="form-group">
-                <label for="nama_peralatan">Nama Peralatan:</label>
-                <input type="text" class="form-control" id="nama_peralatan" name="nama_peralatan"
-                    value="<?php echo $data['nama_peralatan']; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="kondisi">Kondisi:</label>
-                <input type="text" class="form-control" id="kondisi" name="kondisi"
-                    value="<?php echo $data['kondisi']; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="lokasi">Lokasi:</label>
-                <input type="text" class="form-control" id="lokasi" name="lokasi" value="<?php echo $data['lokasi']; ?>"
-                    required>
-            </div>
-            <button type="submit" class="btn btn-primary">Update Peralatan</button>
-        </form>
+        ?>
+                <form action="proses_update_peralatan.php" method="POST">
+                    <input type="hidden" name="id_peralatan" value="<?php echo $data['id_peralatan']; ?>">
+                    <div class="form-group">
+                        <label for="nama_peralatan">Nama Peralatan:</label>
+                        <input type="text" class="form-control" id="nama_peralatan" name="nama_peralatan" value="<?php echo $data['nama_peralatan']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kondisi">Kondisi:</label>
+                        <input type="text" class="form-control" id="kondisi" name="kondisi" value="<?php echo $data['kondisi']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lokasi">Lokasi:</label>
+                        <input type="text" class="form-control" id="lokasi" name="lokasi" value="<?php echo $data['lokasi']; ?>" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Peralatan</button>
+                </form>
         <?php
             } else {
                 echo "Data peralatan tidak ditemukan.";
@@ -108,7 +103,7 @@
             echo "ID peralatan tidak ditemukan.";
         }
 
-        mysqli_close($kon);
+        mysqli_close($koneksi);
         ?>
         <br>
         <a href="indexperalatan.php" class="btn btn-primary" role="button">Kembali</a>
@@ -122,8 +117,7 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-xrRywqdh4ap4Zd4z+IetGqDz0W5iq/8iV0p4P6O+C5JbK1wY4k5Baq4E+g2jcF5w" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh4ap4Zd4z+IetGqDz0W5iq/8iV0p4P6O+C5JbK1wY4k5Baq4E+g2jcF5w" crossorigin="anonymous">
     </script>
 </body>
 

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $alamat = $_POST["alamat"];
 
         $sql = "UPDATE dokter SET nama=?, spesialisasi=?, no_hp=?, alamat=? WHERE id_dokter=?";
-        $stmt = mysqli_prepare($kon, $sql);
+        $stmt = mysqli_prepare($koneksi, $sql);
 
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "ssssi", $nama, $spesialisasi, $no_hp, $alamat, $id_dokter);
@@ -18,13 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_stmt_execute($stmt)) {
                 echo "Data dokter berhasil diperbarui.";
             } else {
-                echo "Terjadi kesalahan saat memperbarui data dokter: " . mysqli_error($kon);
+                echo "Terjadi kesalahan saat memperbarui data dokter: " . mysqli_error($koneksi);
             }
 
             mysqli_stmt_close($stmt);
-            mysqli_close($kon);
+            mysqli_close($koneksi);
         } else {
-            echo "Error: " . mysqli_error($kon);
+            echo "Error: " . mysqli_error($koneksi);
         }
     } else {
         echo "Semua input diperlukan.";
@@ -32,4 +32,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Metode request tidak valid.";
 }
-?>

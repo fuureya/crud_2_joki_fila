@@ -9,14 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = "UPDATE peralatan SET nama_peralatan='$nama_peralatan', kondisi='$kondisi', lokasi='$lokasi' WHERE id_peralatan=$id_peralatan";
 
-    if (mysqli_query($kon, $sql)) {
-        mysqli_close($kon);
+    if (mysqli_query($koneksi, $sql)) {
+        mysqli_close($koneksi);
         header('Location: indexperalatan.php');
         exit;
     } else {
-        echo "Error updating record: " . mysqli_error($kon);
+        echo "Error updating record: " . mysqli_error($koneksi);
     }
 }
 
-mysqli_close($kon);
-?>
+mysqli_close($koneksi);
