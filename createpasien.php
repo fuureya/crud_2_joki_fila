@@ -5,60 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JIENCIO CENTER - Tambah Pasien</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <style>
-    body {
-        background-image: url('gambarbg.jpg');
-        background-size: cover;
-        background-position: center;
-        color: black;
-    }
+        body {
+            background-image: url('gambarbg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: black;
+        }
 
-    .logo {
-        height: 1.2em;
-        margin-right: 30px;
-    }
+        .logo {
+            height: 1.2em;
+            margin-right: 30px;
+        }
 
-    .navbar {
-        background-color: #343a40 !important;
-    }
+        .navbar {
+            background-color: #343a40 !important;
+        }
 
-    .navbar-nav .nav-item .nav-link {
-        color: #ffffff !important;
-    }
+        .navbar-nav .nav-item .nav-link {
+            color: #ffffff !important;
+        }
 
-    .navbar-nav .nav-item .nav-link.active,
-    .navbar-nav .nav-item .nav-link:hover {
-        color: #ffffff !important;
-    }
+        .navbar-nav .nav-item .nav-link.active,
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #ffffff !important;
+        }
 
-    .container {
-        margin-top: 20px;
-    }
+        .container {
+            margin-top: 20px;
+        }
 
-    .form-custom {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 5px;
-    }
+        .form-custom {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+        }
 
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #f8f9fa;
-        text-align: center;
-        padding: 10px 0;
-    }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="home.php">JIENCIO CENTER</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -116,8 +114,7 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-xrRywqdh4ap4Zd4z+IetGqDz0W5iq/8iV0p4P6O+C5JbK1wY4k5Baq4E+g2jcF5w" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh4ap4Zd4z+IetGqDz0W5iq/8iV0p4P6O+C5JbK1wY4k5Baq4E+g2jcF5w" crossorigin="anonymous">
     </script>
 </body>
 
@@ -127,19 +124,19 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include "koneksi.php";
 
-    $nama = mysqli_real_escape_string($kon, $_POST["nama"]);
-    $usia = mysqli_real_escape_string($kon, $_POST["usia"]);
-    $jenis_kelamin = mysqli_real_escape_string($kon, $_POST["jenis_kelamin"]);
-    $alamat = mysqli_real_escape_string($kon, $_POST["alamat"]);
+    $nama = mysqli_real_escape_string($koneksi, $_POST["nama"]);
+    $usia = mysqli_real_escape_string($koneksi, $_POST["usia"]);
+    $jenis_kelamin = mysqli_real_escape_string($koneksi, $_POST["jenis_kelamin"]);
+    $alamat = mysqli_real_escape_string($koneksi, $_POST["alamat"]);
 
     $sql = "INSERT INTO pasien (nama, usia, jenis_kelamin, alamat) VALUES ('$nama', '$usia', '$jenis_kelamin', '$alamat')";
 
-    if (mysqli_query($kon, $sql)) {
+    if (mysqli_query($koneksi, $sql)) {
         echo "<script>alert('Data pasien berhasil disimpan');window.location='indexpasien.php';</script>";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($kon);
+        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
     }
 
-    mysqli_close($kon);
+    mysqli_close($koneksi);
 }
 ?>
